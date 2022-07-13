@@ -48,14 +48,18 @@ def stats():
     min_value = column.min()
     min_value2 = column.drop_duplicates().nsmallest(2).iloc[-1]
     #highest
+    print('Highest claim')
     print(max_value)
     #lowest
+    print('lowest claim')
     print(min_value)
     #lowest excluding 0
+    print('2nd lowest claim')
     print(min_value2)
     #mean
     avg_val = column.mean()
     #lowest excluding 0
+    print('average claim amount')
     print(avg_val)
     
 def top5insuranceClaimProviders():
@@ -81,6 +85,16 @@ def TotalAmountPaid():
     fig = px.bar(df_top5_2017, x="Plan_Name", y=["Plan_Pay", "Secondary_Plan_Pay"])
     fig.show()
     
+    
+def OOP():
+    file = "rx_demo.xlsx"
+    df = pd.read_excel (file)
+
+    df_top_5 = df.loc[df['Plan_Name'].isin(['UAW RETIREE MEDICAL BENEFITS TRUST','CASH TX','HCSC BCBS TX','HUMANA HEALTH PLAN PDP32','CIGNA-HEALTHSPRING TX'])]
+
+    df_top5_PatPay = df['Patient_Pay'].sum()
+    print('Total OOP')
+    print(df_top5_PatPay)
     
    
         

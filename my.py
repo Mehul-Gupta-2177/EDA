@@ -39,6 +39,23 @@ def averageClaimJuly2017():
     average_claims = claims/num_patients
     print(round(average_claims, 1))
     
+def stats():
+    file = "rx_demo.xlsx"
+    data = pd.read_excel(file) #reading file
+    column = data["Plan_Pay"]
+    max_value = column.max()
+    min_value = column.min()
+    min_value2 = column.drop_duplicates().nsmallest(2).iloc[-1]
+    #highest
+    print(max_value)
+    #lowest
+    print(min_value)
+    #lowest excluding 0
+    print(min_value2)
+    #mean
+    avg_val = column.mean()
+    #lowest excluding 0
+    print(avg_val)
     
         
         
